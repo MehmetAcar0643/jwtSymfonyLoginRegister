@@ -6,3 +6,5 @@ login:
   path:       /api/login
   controller: App\Controller\SecurityController::login
   methods: GET|POST
+
+  
