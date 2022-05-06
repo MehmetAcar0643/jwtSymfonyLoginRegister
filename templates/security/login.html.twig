@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Log in!{% endblock %}
+
+{% block body %}
+    <form action="" method="post">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData,'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                {{ app.user.username }} olarak giriş yaptın , <a href="{{ path('app_logout') }}">Çıkış Yp</a>
+            </div>
+        {% endif %}
+
+        <h1>Giriş</h1>
+        <label for="">Email</label>
+        <input type="email" value="{{ last_username }}" name="email">
+        <label for="">Şifre</label>
+        <input type="password" name="password">
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <button type="submit">
+            Giriş
+        </button>
+        <a href="{{ path('app_register') }}">Kayıt Ol</a>
+    </form>
+{% endblock %}
